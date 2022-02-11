@@ -1,0 +1,42 @@
+mport java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+/*<applet code=”s” width=300 height=300></applet*/
+Public class s extends Applet implements Runnable {
+Int xOval=30;
+Int yOval=30;
+Int Count=0;
+Public void init() {
+setSize (300,300);
+setBackground(Color.red);
+}
+public void start() {
+Thread th=new Thread(this);
+Th.start();
+}
+Public void stop()
+{ }
+Public void paint(Graphics g) {
+g.setColor(Color.yellow);
+g.fillOval(30+xOval,30,200,200);
+g.setColor(Color.black);
+g.fillOval(80+xOval,65,30,30);
+if(Count%2==0)
+g.drawArc(105+xOval,150,50,40,0,-180);
+else
+g.drawArc(105+xOval,150,50,40,0,180);
+}
+Public void run() {
+Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
+While(true) {
+Count++;
+xOval=xOval+15;
+repaint();
+try {
+Thread.sleep(500);
+}
+Catch(InterruptedException ex)
+{ }
+}
+}
+}
